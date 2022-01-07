@@ -44,7 +44,11 @@ namespace Jeu
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            _eleveVitesse = 100;
+            _profVitesse = 100;
+            _graphics.PreferredBackBufferWidth = FENETRE_LARGEUR;
+            _graphics.PreferredBackBufferHeight = FENETRE_HAUTEUR;
+            _graphics.ApplyChanges();
             base.Initialize();
         }
 
