@@ -53,6 +53,10 @@ namespace Jeu
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
+            //map
+            _tiledMap = Content.Load<TiledMap>(""); //faudra ajouter le nom de la map
+            _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
         }
 
         protected override void Update(GameTime gameTime)
