@@ -61,6 +61,11 @@ namespace Jeu
             //map
             _tiledMap = Content.Load<TiledMap>(""); //faudra ajouter le nom de la map
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+
+            //spritesheet
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
+            _eleve = new AnimatedSprite(spriteSheet);
+            _prof = new AnimatedSprite(spriteSheet);
         }
 
         protected override void Update(GameTime gameTime)
@@ -73,6 +78,7 @@ namespace Jeu
             float walkSpeed = deltaSeconds * _eleveVitesse;
             string animation = "idle";
 
+            //déplacements élève
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))
             {
@@ -119,7 +125,16 @@ namespace Jeu
 
             // TODO: Add your drawing code here
 
+            _spriteBatch.Begin();
 
+            //personnages
+            _spriteBatch.Draw(_eleve, _elevePosition);
+            _spriteBatch.Draw(_prof, _profPosition);
+            
+            //map
+            _tiledMapRenderer.Draw();
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
