@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Serialization;
 using MonoGame.Extended.Sprites;
+using MonoGame.Extended.Tiled;
+using MonoGame.Extended.Tiled.Renderers;
 
 
 namespace Jeu
@@ -12,6 +14,25 @@ namespace Jeu
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        //fenêtre - à modifier
+        public const int FENETRE_HAUTEUR = 0;
+        public const int FENETRE_LARGEUR = 0;
+
+        //map
+        private TiledMap _tiledMap;
+        private TiledMapRenderer _tiledMapRenderer;
+        private TiledMapTileLayer mapLayer;
+
+        //personnage élève
+        private Vector2 _elevePosition;
+        private AnimatedSprite _eleve;
+        private int _eleveVitesse;
+
+        //personnage prof
+        private Vector2 _profPosition;
+        private AnimatedSprite _prof;
+        private int _profVitesse;
 
         public Game1()
         {
