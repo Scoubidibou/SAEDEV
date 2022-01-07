@@ -138,5 +138,16 @@ namespace Jeu
 
             base.Draw(gameTime);
         }
+
+        //méthode pour les collisions
+        private bool IsCollision(ushort x, ushort y)
+        {
+            TiledMapTile? tile;
+            if (mapLayer.TryGetTile(x, y, out tile) == false)
+                return false;
+            if (!tile.Value.IsBlank)
+                return true;
+            return false;
+        }
     }
 }
