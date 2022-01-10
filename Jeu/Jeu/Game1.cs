@@ -77,9 +77,11 @@ namespace Jeu
             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");
 
             //spritesheet
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso.sf", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
             _eleve = new AnimatedSprite(spriteSheet);
+            _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
             _prof = new AnimatedSprite(spriteSheet);
+            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
         }
 
         protected override void Update(GameTime gameTime)
@@ -95,13 +97,6 @@ namespace Jeu
             //déplacements élève
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))
-            {
-                if (_elevePosition.X >= _eleve.TextureRegion.Width / 2)
-                {
-                    animation = "walkWest";
-                    _elevePosition.X -= walkSpeed;
-                }
-            }
             if (keyboardState.IsKeyDown(Keys.Right))
             {
                 if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
@@ -146,7 +141,7 @@ namespace Jeu
             _spriteBatch.Draw(_prof, _profPosition);
             
             //map
-            _tiledMapRendu.Draw();
+            //_tiledMapRendu.Draw();
 
             _spriteBatch.End();
 
