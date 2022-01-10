@@ -72,9 +72,9 @@ namespace Jeu
             // TODO: use this.Content to load your game content here
 
             //map
-            _tiledMap = Content.Load<TiledMap>(""); //faudra ajouter le nom de la map
-            _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-            _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");
+            /* _tiledMap = Content.Load<TiledMap>(""); //faudra ajouter le nom de la map
+             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");*/
 
             //spritesheet
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso.sf", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
@@ -149,7 +149,7 @@ namespace Jeu
         }
 
         //méthode pour les collisions
-        private bool IsCollision(ushort x, ushort y)
+       /* private bool IsCollision(ushort x, ushort y)
         {
             TiledMapTile? tile;
             if (_tiledMapObstacles.TryGetTile(x, y, out tile) == false)
@@ -157,6 +157,6 @@ namespace Jeu
             if (!tile.Value.IsBlank)
                 return true;
             return false;
-        }
+        }*/
     }
 }
