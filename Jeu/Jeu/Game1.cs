@@ -15,8 +15,6 @@ namespace Jeu
 {
     public class Game1 : Game
     {
-        //IsMouseVisible = true;    ne marche pas jsp pk
-
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -24,7 +22,7 @@ namespace Jeu
         public const int FENETRE_HAUTEUR = 0;
         public const int FENETRE_LARGEUR = 0;
 
-        //map
+        //maps
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRenderer;
         private TiledMapTileLayer mapLayer;
@@ -38,6 +36,9 @@ namespace Jeu
         private Vector2 _profPosition;
         private AnimatedSprite _prof;
         private int _profVitesse;
+
+        //gestionnaire de scènes
+        private readonly ScreenManager _screenManager;
 
         public Game1()
         {
