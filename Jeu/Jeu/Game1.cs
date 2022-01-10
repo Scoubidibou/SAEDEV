@@ -158,8 +158,5 @@ namespace Jeu
                 return true;
             return false;
         }
-
-        //méthode pour le déplacement
-        public static Vector2 deplacement(AnimatedSprite perso)
     }
 }
