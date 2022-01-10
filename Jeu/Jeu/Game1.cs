@@ -10,7 +10,7 @@ using MonoGame.Extended.Tiled.Renderers;
 
 namespace Jeu
 {
-    public class Game1 : Game //lalala
+    public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -44,11 +44,18 @@ namespace Jeu
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _eleveVitesse = 100;
-            _profVitesse = 100;
+            
+            //fenêtre
             _graphics.PreferredBackBufferWidth = FENETRE_LARGEUR;
             _graphics.PreferredBackBufferHeight = FENETRE_HAUTEUR;
             _graphics.ApplyChanges();
+
+            //élève
+            _eleveVitesse = 100;
+            
+            //prof
+            _profVitesse = 100;
+           
             base.Initialize();
         }
 
