@@ -10,7 +10,7 @@ using MonoGame.Extended.Tiled.Renderers;
 
 namespace Jeu
 {
-    public class Game1 : Game
+    public class Game1 : Game //lalala
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
