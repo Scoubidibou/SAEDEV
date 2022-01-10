@@ -24,8 +24,8 @@ namespace Jeu
 
         //maps
         private TiledMap _tiledMap;
-        private TiledMapRenderer _tiledMapRenderer;
-        private TiledMapTileLayer mapLayer;
+        private TiledMapRenderer _tiledMapRendu;
+        private TiledMapTileLayer _tiledMapObstacles;
 
         //personnage élève
         private Vector2 _elevePosition;
@@ -73,7 +73,8 @@ namespace Jeu
 
             //map
             _tiledMap = Content.Load<TiledMap>(""); //faudra ajouter le nom de la map
-            _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");
 
             //spritesheet
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
@@ -145,7 +146,7 @@ namespace Jeu
             _spriteBatch.Draw(_prof, _profPosition);
             
             //map
-            _tiledMapRenderer.Draw();
+            _tiledMapRendu.Draw();
 
             _spriteBatch.End();
 
@@ -156,7 +157,7 @@ namespace Jeu
         private bool IsCollision(ushort x, ushort y)
         {
             TiledMapTile? tile;
-            if (mapLayer.TryGetTile(x, y, out tile) == false)
+            if (_tiledMapObstacles.TryGetTile(x, y, out tile) == false)
                 return false;
             if (!tile.Value.IsBlank)
                 return true;
