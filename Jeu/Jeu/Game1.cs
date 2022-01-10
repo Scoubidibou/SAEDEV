@@ -6,12 +6,17 @@ using MonoGame.Extended.Serialization;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using MonoGame.Extended.Screens;
+using MonoGame.Extended.Screens.Transitions;
+using System;
 
 
 namespace Jeu
 {
     public class Game1 : Game
     {
+        //IsMouseVisible = true;    ne marche pas jsp pk
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
