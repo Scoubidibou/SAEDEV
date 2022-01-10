@@ -70,7 +70,7 @@ namespace Jeu
             _tiledMapRenderer = new TiledMapRenderer(GraphicsDevice, _tiledMap);
 
             //spritesheet
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
             _eleve = new AnimatedSprite(spriteSheet);
             _prof = new AnimatedSprite(spriteSheet);
         }
