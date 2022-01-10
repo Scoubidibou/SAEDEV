@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Content;
 using MonoGame.Extended.Serialization;
 using MonoGame.Extended.Sprites;
@@ -9,15 +9,19 @@ using MonoGame.Extended.Tiled.Renderers;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Jeu
 {
     class deplacements
     {
-        //méthode pour le déplacement
-        /*public static Vector2 deplacements(AnimatedSprite _perso, Vector2 _persoPosition, TiledMap _map)
+        //méthode pour le déplacement - ça m'a soulé ça marche pas
+        /*public static Vector2 deplacements(AnimatedSprite _perso, Vector2 _persoPosition, TiledMap _map, int _persoVitesse)
         {
-
+            float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            float walkSpeed = deltaSeconds * _persoVitesse;
+            string animation = "";
             KeyboardState keyboardState = Keyboard.GetState();
 
             if (keyboardState.IsKeyDown(Keys.Left))
