@@ -50,7 +50,7 @@ namespace Jeu
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+
             //fenêtre
             _graphics.PreferredBackBufferWidth = FENETRE_LARGEUR;
             _graphics.PreferredBackBufferHeight = FENETRE_HAUTEUR;
@@ -58,10 +58,10 @@ namespace Jeu
 
             //élève
             _eleveVitesse = 100;
-            
+
             //prof
             _profVitesse = 100;
-           
+
             base.Initialize();
         }
 
@@ -97,27 +97,32 @@ namespace Jeu
             //déplacements élève
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))
+            {
+                animation = "walkWest";
+                if (_elevePosition.X <= _eleve.TextureRegion.Width / 2)
+                    _elevePosition.X -= walkSpeed;
+            }
             if (keyboardState.IsKeyDown(Keys.Right))
             {
+                animation = "walkEast";
                 if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
                 {
-                    animation = "walkEast";
                     _elevePosition.X += walkSpeed;
                 }
             }
             if (keyboardState.IsKeyDown(Keys.Up))
             {
+                animation = "walkNorth";
                 if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
                 {
-                    animation = "walkNorth";
                     _elevePosition.Y -= walkSpeed;
                 }
             }
             if (keyboardState.IsKeyDown(Keys.Down))
             {
+                animation = "walkSouth";
                 if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
                 {
-                    animation = "walkSouth";
                     _elevePosition.Y += walkSpeed;
                 }
             }
@@ -139,7 +144,7 @@ namespace Jeu
             //personnages
             _spriteBatch.Draw(_eleve, _elevePosition);
             //_spriteBatch.Draw(_prof, _profPosition);
-            
+
             //map
             //_tiledMapRendu.Draw();
 
@@ -149,7 +154,7 @@ namespace Jeu
         }
 
         //méthode pour les collisions
-       private bool IsCollision(ushort x, ushort y)
+        private bool IsCollision(ushort x, ushort y)
         {
             TiledMapTile? tile;
             if (_tiledMapObstacles.TryGetTile(x, y, out tile) == false)
