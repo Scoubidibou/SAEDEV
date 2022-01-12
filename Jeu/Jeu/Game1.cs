@@ -80,8 +80,8 @@ namespace Jeu
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
             _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-            _prof = new AnimatedSprite(spriteSheet);
-            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            //_prof = new AnimatedSprite(spriteSheet);
+            //_profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
         }
 
         protected override void Update(GameTime gameTime)
@@ -93,6 +93,10 @@ namespace Jeu
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
             float walkSpeed = deltaSeconds * _eleveVitesse;
             string animation = "idle";
+
+            //map
+            //_tiledMapRenderer.Update(gameTime);
+            GraphicsDevice.BlendState = BlendState.AlphaBlend;
 
             //déplacements élève
             KeyboardState keyboardState = Keyboard.GetState();
