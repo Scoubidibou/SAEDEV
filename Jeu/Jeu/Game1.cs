@@ -98,39 +98,47 @@ namespace Jeu
             KeyboardState keyboardState = Keyboard.GetState();
             if (keyboardState.IsKeyDown(Keys.Left))
             {
-                animation = "walkWest";
+
                 if (_elevePosition.X <= _eleve.TextureRegion.Width / 2)
-                    _elevePosition.X -= walkSpeed;
-            }
-            if (keyboardState.IsKeyDown(Keys.Right))
-            {
-                animation = "walkEast";
-                if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
                 {
-                    _elevePosition.X += walkSpeed;
+                    {
+                        animation = "walkWest";
+                        _elevePosition.X -= walkSpeed;
+                    }
                 }
-            }
-            if (keyboardState.IsKeyDown(Keys.Up))
-            {
-                animation = "walkNorth";
-                if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
+                if (keyboardState.IsKeyDown(Keys.Right))
                 {
-                    _elevePosition.Y -= walkSpeed;
-                }
-            }
-            if (keyboardState.IsKeyDown(Keys.Down))
-            {
-                animation = "walkSouth";
-                if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
-                {
-                    _elevePosition.Y += walkSpeed;
-                }
-            }
 
-            _eleve.Play(animation);
-            _eleve.Update(deltaSeconds);
+                    if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
+                    {
+                        animation = "walkEast";
+                        _elevePosition.X += walkSpeed;
+                    }
+                }
+                if (keyboardState.IsKeyDown(Keys.Up))
+                {
 
-            base.Update(gameTime);
+                    if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
+                    {
+                        animation = "walkNorth";
+                        _elevePosition.Y -= walkSpeed;
+                    }
+                }
+                if (keyboardState.IsKeyDown(Keys.Down))
+                {
+
+                    if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
+                    {
+                        animation = "walkSouth";
+                        _elevePosition.Y += walkSpeed;
+                    }
+                }
+
+                _eleve.Play(animation);
+                _eleve.Update(deltaSeconds);
+
+                base.Update(gameTime);
+            }
         }
 
         protected override void Draw(GameTime gameTime)
