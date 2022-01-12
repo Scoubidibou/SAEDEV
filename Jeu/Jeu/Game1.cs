@@ -77,7 +77,7 @@ namespace Jeu
              _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");*/
 
             //spritesheet
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso.sf", new JsonContentLoader()); //faudra ajouter le nom du spritesheet
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
             _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
             _prof = new AnimatedSprite(spriteSheet);
@@ -138,7 +138,7 @@ namespace Jeu
 
             //personnages
             _spriteBatch.Draw(_eleve, _elevePosition);
-            _spriteBatch.Draw(_prof, _profPosition);
+            //_spriteBatch.Draw(_prof, _profPosition);
             
             //map
             //_tiledMapRendu.Draw();
@@ -149,7 +149,7 @@ namespace Jeu
         }
 
         //méthode pour les collisions
-       /* private bool IsCollision(ushort x, ushort y)
+       private bool IsCollision(ushort x, ushort y)
         {
             TiledMapTile? tile;
             if (_tiledMapObstacles.TryGetTile(x, y, out tile) == false)
@@ -157,6 +157,6 @@ namespace Jeu
             if (!tile.Value.IsBlank)
                 return true;
             return false;
-        }*/
+        }
     }
 }
