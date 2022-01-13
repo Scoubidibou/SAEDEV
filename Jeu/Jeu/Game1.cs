@@ -19,8 +19,8 @@ namespace Jeu
         private SpriteBatch _spriteBatch;
 
         //fenêtre - à modifier
-        public const int FENETRE_HAUTEUR = 0;
-        public const int FENETRE_LARGEUR = 0;
+        public const int FENETRE_HAUTEUR = 800;
+        public const int FENETRE_LARGEUR = 800;
 
         //maps
         private TiledMap _tiledMap;
