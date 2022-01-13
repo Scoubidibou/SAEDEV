@@ -18,6 +18,7 @@ namespace Jeu
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+
         //fenêtre - à modifier
         public const int FENETRE_HAUTEUR = 800;
         public const int FENETRE_LARGEUR = 800;
@@ -77,7 +78,7 @@ namespace Jeu
              _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");*/
 
             //spritesheet
-            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("spritePerso.sf", new JsonContentLoader());
+            SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
             _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
             //_prof = new AnimatedSprite(spriteSheet);
@@ -103,51 +104,54 @@ namespace Jeu
             if (keyboardState.IsKeyDown(Keys.Left))
             {
 
-                if (_elevePosition.X <= _eleve.TextureRegion.Width / 2)
+                if (_elevePosition.X >= _eleve.TextureRegion.Width / 2)
                 {
-                    {
+                    
                         animation = "walkWest";
                         _elevePosition.X -= walkSpeed;
-                    }
+                    
                 }
-                if (keyboardState.IsKeyDown(Keys.Right))
-                {
-
-                    if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
-                    {
-                        animation = "walkEast";
-                        _elevePosition.X += walkSpeed;
-                    }
-                }
-                if (keyboardState.IsKeyDown(Keys.Up))
-                {
-
-                    if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
-                    {
-                        animation = "walkNorth";
-                        _elevePosition.Y -= walkSpeed;
-                    }
-                }
-                if (keyboardState.IsKeyDown(Keys.Down))
-                {
-
-                    if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
-                    {
-                        animation = "walkSouth";
-                        _elevePosition.Y += walkSpeed;
-                    }
-                }
-
-                _eleve.Play(animation);
-                _eleve.Update(deltaSeconds);
-
-                base.Update(gameTime);
             }
+            if (keyboardState.IsKeyDown(Keys.Right))
+            {
+
+                if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
+                {
+                    animation = "walkEast";
+                    _elevePosition.X += walkSpeed;
+                }
+            }
+            if (keyboardState.IsKeyDown(Keys.Up))
+            {
+
+                if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
+                {
+                    animation = "walkNorth";
+                    _elevePosition.Y -= walkSpeed;
+                }
+            }
+            if (keyboardState.IsKeyDown(Keys.Down))
+            {
+
+                if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
+                {
+                    animation = "walkSouth";
+                    _elevePosition.Y += walkSpeed;
+                }
+            }
+
+            _eleve.Play(animation);
+            _eleve.Update(deltaSeconds);
+
+            base.Update(gameTime);
+
+
+
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Red);
+            GraphicsDevice.Clear(Color.Yellow);
 
             // TODO: Add your drawing code here
 
