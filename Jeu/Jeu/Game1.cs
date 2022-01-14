@@ -97,6 +97,7 @@ namespace Jeu
             string animation2 = "idle2";
 
             //map
+            _tiledMapRendu.Update(gameTime);
             //_tiledMapRenderer.Update(gameTime);
             GraphicsDevice.BlendState = BlendState.AlphaBlend;
 
@@ -166,6 +167,7 @@ namespace Jeu
             _spriteBatch.Draw(_prof, _profPosition);
 
             //map
+            _tiledMapRendu.Draw();
             //_tiledMapRendu.Draw();
 
             _spriteBatch.End();
