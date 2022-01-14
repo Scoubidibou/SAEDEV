@@ -69,9 +69,9 @@ namespace Jeu
             // TODO: use this.Content to load your game content here
 
             //map
-            /* _tiledMap = Content.Load<TiledMap>(""); //faudra ajouter le nom de la map
+             _tiledMap = Content.Load<TiledMap>("Couloir.tmx"); //faudra ajouter le nom de la map
              _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");*/
+             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");
 
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
