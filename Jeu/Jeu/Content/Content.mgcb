@@ -47,6 +47,18 @@
 /processorParam:TextureFormat=Color
 /build:spriteProf.png
 
+#begin tiles_cus_shanktonstatepen.gif
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:tiles_cus_shanktonstatepen.gif
+
 #begin tiles_cus_shanktonstatepen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -58,4 +70,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:tiles_cus_shanktonstatepen.png
+
+#begin tiles_cus_shanktonstatepen.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:tiles_cus_shanktonstatepen.tsx
 
