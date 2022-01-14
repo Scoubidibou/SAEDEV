@@ -73,10 +73,12 @@ namespace Jeu
              _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
              _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");*/
 
-            //spritesheet
+            //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
             _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+
+            //spritesheet prof
             SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
             _prof = new AnimatedSprite(spriteSheet2);
             _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
@@ -139,16 +141,14 @@ namespace Jeu
                 }
             }
 
-            //deplacement prof
-
-            
-
             _eleve.Play(animation);
             _eleve.Update(deltaSeconds);
 
-            //_prof.Play(animation);
+            //deplacement prof
+            _prof.Play(animation2);
             //_prof.Update(deltaSeconds);
 
+            
             base.Update(gameTime);
 
         }
