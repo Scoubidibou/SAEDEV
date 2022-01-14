@@ -36,7 +36,6 @@ namespace Jeu
         //personnage prof
         private Vector2 _profPosition;
         private AnimatedSprite _prof;
-        private int _profVitesse;
 
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
@@ -59,9 +58,6 @@ namespace Jeu
 
             //élève
             _eleveVitesse = 100;
-
-            //prof
-            _profVitesse = 100;
 
             base.Initialize();
         }
@@ -91,6 +87,7 @@ namespace Jeu
                 Exit();
 
             // TODO: Add your update logic here
+
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
             float walkSpeed = deltaSeconds * _eleveVitesse;
             string animation = "idle";
@@ -144,8 +141,6 @@ namespace Jeu
             _eleve.Update(deltaSeconds);
 
             base.Update(gameTime);
-
-
 
         }
 
