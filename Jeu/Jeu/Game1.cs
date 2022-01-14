@@ -77,8 +77,9 @@ namespace Jeu
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
             _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-            //_prof = new AnimatedSprite(spriteSheet);
-            //_profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
+            _prof = new AnimatedSprite(spriteSheet2);
+            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
         }
 
         protected override void Update(GameTime gameTime)
@@ -91,6 +92,7 @@ namespace Jeu
             float deltaSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
             float walkSpeed = deltaSeconds * _eleveVitesse;
             string animation = "idle";
+            string animation2 = "idle2";
 
             //map
             //_tiledMapRenderer.Update(gameTime);
@@ -137,8 +139,15 @@ namespace Jeu
                 }
             }
 
+            //deplacement prof
+
+            
+
             _eleve.Play(animation);
             _eleve.Update(deltaSeconds);
+
+            //_prof.Play(animation);
+            //_prof.Update(deltaSeconds);
 
             base.Update(gameTime);
 
@@ -154,7 +163,7 @@ namespace Jeu
 
             //personnages
             _spriteBatch.Draw(_eleve, _elevePosition);
-            //_spriteBatch.Draw(_prof, _profPosition);
+            _spriteBatch.Draw(_prof, _profPosition);
 
             //map
             //_tiledMapRendu.Draw();
