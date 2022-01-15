@@ -20,13 +20,16 @@ namespace Jeu
 
 
         //fenêtre - à modifier
-        public const int FENETRE_HAUTEUR = 800;
-        public const int FENETRE_LARGEUR = 800;
+        public const int FENETRE_HAUTEUR = 620;
+        public const int FENETRE_LARGEUR = 605;
 
         //maps
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRendu;
         private TiledMapTileLayer _tiledMapObstacles;
+
+        //Collisions
+        private TiledMapTileLayer mapLayer;
 
         //personnage élève
         private Vector2 _elevePosition;
@@ -71,7 +74,8 @@ namespace Jeu
             //map
              _tiledMap = Content.Load<TiledMap>("Couloir"); //faudra ajouter le nom de la map
              _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
-             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("obstacles");
+            //collisions
+             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
 
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
@@ -108,10 +112,11 @@ namespace Jeu
 
                 if (_elevePosition.X >= _eleve.TextureRegion.Width / 2)
                 {
-                    
-                        animation = "walkWest";
-                        _elevePosition.X -= walkSpeed;
-                    
+                    ushort tx = (ushort)(_elevePosition.X / _tiledMap.TileWidth - 1);
+                    ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight); //la tuile au-dessus en y
+                    animation = "walkWest";
+                    if (!IsCollision(tx, ty))
+                        _elevePosition.X -= walkSpeed; // _persoPosition vecteur position du sprite
                 }
             }
             if (keyboardState.IsKeyDown(Keys.Right))
@@ -119,8 +124,11 @@ namespace Jeu
 
                 if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
                 {
+                    ushort tx = (ushort)(_elevePosition.X / _tiledMap.TileWidth + 1);
+                    ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight);
                     animation = "walkEast";
-                    _elevePosition.X += walkSpeed;
+                    if (!IsCollision(tx, ty))
+                        _elevePosition.X += walkSpeed; // _persoPosition vecteur position du sprite
                 }
             }
             if (keyboardState.IsKeyDown(Keys.Up))
@@ -128,8 +136,11 @@ namespace Jeu
 
                 if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
                 {
+                    ushort tx = (ushort)(_elevePosition.X / _tiledMap.TileWidth);
+                    ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight - 1); //la tuile au-dessus en y
                     animation = "walkNorth";
-                    _elevePosition.Y -= walkSpeed;
+                    if (!IsCollision(tx, ty))
+                        _elevePosition.Y -= walkSpeed; // _persoPosition vecteur position du sprite
                 }
             }
             if (keyboardState.IsKeyDown(Keys.Down))
@@ -137,8 +148,11 @@ namespace Jeu
 
                 if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
                 {
+                    ushort tx = (ushort)(_elevePosition.X / _tiledMap.TileWidth);
+                    ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight + 2); //la tuile au-dessus en y
                     animation = "walkSouth";
-                    _elevePosition.Y += walkSpeed;
+                    if (!IsCollision(tx, ty))
+                        _elevePosition.Y += walkSpeed; // _persoPosition vecteur position du sprite
                 }
             }
 
