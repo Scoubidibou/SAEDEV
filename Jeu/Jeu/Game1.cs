@@ -284,7 +284,23 @@ namespace Jeu
             }
             if (keyboardState.IsKeyDown(Keys.B))
             {
-                //LoadScreen2();
+                LoadScreen2();
+            }
+            if (keyboardState.IsKeyDown(Keys.C))
+            {
+                LoadScreen3();
+            }
+            if (keyboardState.IsKeyDown(Keys.D))
+            {
+                LoadScreen4();
+            }
+            if (keyboardState.IsKeyDown(Keys.E))
+            {
+                LoadScreen5();
+            }
+            if (keyboardState.IsKeyDown(Keys.F))
+            {
+                LoadScreen6();
             }
 
             base.Update(gameTime);
@@ -305,7 +321,6 @@ namespace Jeu
 
             //map
             _tiledMapRendu.Draw();
-            //_tiledMapRendu.Draw();
 
             _spriteBatch.End();
 
@@ -326,7 +341,27 @@ namespace Jeu
         //méthodes pour load les différentes map
         private void LoadScreen1()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(new ScreenMapSalle1(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadScreen2()
+        {
+            _screenManager.LoadScreen(new ScreenMapSalle2(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadScreen3()
+        {
+            _screenManager.LoadScreen(new ScreenMapSalle3(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadScreen4()
+        {
+            _screenManager.LoadScreen(new ScreenMapSalle4(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadScreen5()
+        {
+            _screenManager.LoadScreen(new ScreenMapSalle5(this), new FadeTransition(GraphicsDevice, Color.Black));
+        }
+        private void LoadScreen6()
+        {
+            _screenManager.LoadScreen(new ScreenMapSalle6(this), new FadeTransition(GraphicsDevice, Color.Black));
         }
     }
 }
