@@ -42,8 +42,8 @@ namespace Jeu
         //personnage prof
         private Vector2 _profPosition;
         private AnimatedSprite _prof;
-
         private TypeAnimation _animation;
+        private float _chrono;
 
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
@@ -160,6 +160,8 @@ namespace Jeu
             //élève
             _eleveVitesse = 100;
 
+            //chrono prof
+            _chrono = 0;
             base.Initialize();
         }
 
@@ -170,10 +172,10 @@ namespace Jeu
             // TODO: use this.Content to load your game content here
 
             //map
-             _tiledMap = Content.Load<TiledMap>("Couloir");
+             _tiledMap = Content.Load<TiledMap>("Couloir"); //faudra ajouter le nom de la map
              _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //collisions
-             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
+            _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
 
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
@@ -258,8 +260,22 @@ namespace Jeu
             _eleve.Update(deltaSeconds);
 
             //deplacement prof
+            if (_chrono < 5)
+            {
+                animation2 = "tetebas";
+            }
+            if ( _chrono > 5)
+            {
+                animation2 = "tetehaut";
+                    
+                if (_chrono > 10)
+                    _chrono = 0;
+            }
+
+            _chrono += deltaSeconds;
+            _prof.Update(deltaSeconds);
             _prof.Play(animation2);
-            //_prof.Update(deltaSeconds);
+
 
             //changements de maps
             if (keyboardState.IsKeyDown(Keys.A))
