@@ -13,6 +13,9 @@ using System;
 
 namespace Jeu
 {
+    public enum Ecran { Principal, Salle1, Salle2, Salle3 };
+    public enum TypeAnimation { walkSouth, walkNorth, walkEast, walkWest, idle };
+
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -40,6 +43,8 @@ namespace Jeu
         private Vector2 _profPosition;
         private AnimatedSprite _prof;
 
+        private TypeAnimation _animation;
+
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
         public SpriteBatch SpriteBatch
@@ -52,6 +57,83 @@ namespace Jeu
             set
             {
                 this._spriteBatch = value;
+            }
+        }
+
+        public AnimatedSprite Eleve
+        {
+            get
+            {
+                return this._eleve;
+            }
+
+            set
+            {
+                this._eleve = value;
+            }
+        }
+
+        public AnimatedSprite Prof
+        {
+            get
+            {
+                return this._prof;
+            }
+
+            set
+            {
+                this._prof = value;
+            }
+        }
+
+        public Vector2 PositionEleve
+        {
+            get
+            {
+                return this._elevePosition;
+            }
+
+            set
+            {
+                this._elevePosition = value;
+            }
+        }
+        public Vector2 PositionProf
+        {
+            get
+            {
+                return this._profPosition;
+            }
+
+            set
+            {
+                this._profPosition = value;
+            }
+        }
+
+        public TypeAnimation Animation
+        {
+            get
+            {
+                return this._animation;
+            }
+
+            set
+            {
+                this._animation = value;
+            }
+        }
+
+        public GraphicsDeviceManager Graphics
+        {
+            get
+            {
+                return this._graphics;
+            }
+
+            set
+            {
+                this._graphics = value;
             }
         }
 
@@ -179,7 +261,16 @@ namespace Jeu
             _prof.Play(animation2);
             //_prof.Update(deltaSeconds);
 
-            
+            //changements de maps
+            if (keyboardState.IsKeyDown(Keys.A))
+            {
+                LoadScreen1();
+            }
+            if (keyboardState.IsKeyDown(Keys.B))
+            {
+                //LoadScreen2();
+            }
+
             base.Update(gameTime);
 
         }
@@ -214,6 +305,12 @@ namespace Jeu
             if (!tile.Value.IsBlank)
                 return true;
             return false;
+        }
+
+        //méthodes pour load les différentes map
+        private void LoadScreen1()
+        {
+            //_screenManager.LoadScreen(new MyScreen1(this), new FadeTransition(GraphicsDevice, Color.Black));
         }
     }
 }
