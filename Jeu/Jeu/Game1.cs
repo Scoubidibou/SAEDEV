@@ -170,7 +170,7 @@ namespace Jeu
             // TODO: use this.Content to load your game content here
 
             //map
-             _tiledMap = Content.Load<TiledMap>("Couloir"); //faudra ajouter le nom de la map
+             _tiledMap = Content.Load<TiledMap>("Couloir");
              _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //collisions
              _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
@@ -310,7 +310,7 @@ namespace Jeu
         //méthodes pour load les différentes map
         private void LoadScreen1()
         {
-            //_screenManager.LoadScreen(new MyScreen1(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(new ScreenMapSalle(this), new FadeTransition(GraphicsDevice, Color.Black));
         }
     }
 }
