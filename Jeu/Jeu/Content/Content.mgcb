@@ -18,10 +18,110 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin bureau.gif
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bureau.gif
+
+#begin bureau.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:bureau.tsx
+
+#begin chaise3.gif
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:chaise3.gif
+
+#begin chaise3.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:chaise3.tsx
+
+#begin coeurNoir.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:coeurNoir.png
+
+#begin coeurRouge.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:coeurRouge.png
+
 #begin Couloir.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:Couloir.tmx
+
+#begin ordi.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:ordi.tsx
+
+#begin salleDeCour4.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:salleDeCour4.tmx
+
+#begin salleDeCour5.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:salleDeCour5.tmx
+
+#begin salleDeCour6.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:salleDeCour6.tmx
+
+#begin salleDeCour7.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:salleDeCour7.tmx
+
+#begin salleDeCour8.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:salleDeCour8.tmx
+
+#begin Sans titre.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sans titre.png
 
 #begin spritePerso.png
 /importer:TextureImporter
@@ -46,6 +146,23 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:spriteProf.png
+
+#begin table.gif
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:table.gif
+
+#begin table.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:table.tsx
 
 #begin tiles_cus_shanktonstatepen.gif
 /importer:TextureImporter
@@ -75,4 +192,26 @@
 /importer:TiledMapTilesetImporter
 /processor:TiledMapTilesetProcessor
 /build:tiles_cus_shanktonstatepen.tsx
+
+#begin Toilette.gif
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Toilette.gif
+
+#begin Toilette.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:Toilette.tmx
+
+#begin Toilette.tsx
+/importer:TiledMapTilesetImporter
+/processor:TiledMapTilesetProcessor
+/build:Toilette.tsx
 
