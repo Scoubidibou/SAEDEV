@@ -13,7 +13,7 @@ using System;
 
 namespace Jeu
 {
-    public enum Ecran { Principal, Salle1, Salle2, Salle3 };
+    public enum Ecran { Principal, Salle1, Salle2, Salle3, Salle4, Salle5, Salle6 };
     public enum TypeAnimation { walkSouth, walkNorth, walkEast, walkWest, idle };
 
     public class Game1 : Game
