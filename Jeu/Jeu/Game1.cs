@@ -22,7 +22,7 @@ namespace Jeu
         private SpriteBatch _spriteBatch;
 
 
-        //fenêtre - à modifier
+        //fenêtre
         public const int FENETRE_HAUTEUR = 620;
         public const int FENETRE_LARGEUR = 605;
 
@@ -32,7 +32,7 @@ namespace Jeu
         private TiledMapTileLayer _tiledMapObstacles;
 
         //Collisions
-        private TiledMapTileLayer mapLayer;
+        //private TiledMapTileLayer mapLayer;
 
         //personnage élève
         private Vector2 _elevePosition;
@@ -51,6 +51,9 @@ namespace Jeu
 
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
+
+        private Ecran _ecranEncours;
+
         public SpriteBatch SpriteBatch
         {
             get
@@ -156,6 +159,10 @@ namespace Jeu
         {
             // TODO: Add your initialization logic here
 
+            //faire une classe pour la map principale
+            //_elevePosition = new Vector2(ScreenMapPrincipale.WIDTH_FENETRE / 2, ScreenMapPrincipale.HEIGHT_FENETRE / 2);
+            base.Initialize();
+
             //fenêtre
             _graphics.PreferredBackBufferWidth = FENETRE_LARGEUR;
             _graphics.PreferredBackBufferHeight = FENETRE_HAUTEUR;
@@ -191,6 +198,10 @@ namespace Jeu
             SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
             _prof = new AnimatedSprite(spriteSheet2);
             _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+
+            //on met le couloir comme map principale
+            //_screenManager.LoadScreen(_screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
+            _ecranEncours = Ecran.Principal;
         }
 
         protected override void Update(GameTime gameTime)
