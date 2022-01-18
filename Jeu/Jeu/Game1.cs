@@ -45,6 +45,10 @@ namespace Jeu
         private TypeAnimation _animation;
         private float _chrono;
 
+        //???
+        private Random tete = new Random();
+        private int temps;
+
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
         public SpriteBatch SpriteBatch
@@ -162,6 +166,7 @@ namespace Jeu
 
             //chrono prof
             _chrono = 0;
+            temps = tete.Next(0, 10);
             base.Initialize();
         }
 
@@ -172,8 +177,8 @@ namespace Jeu
             // TODO: use this.Content to load your game content here
 
             //map
-             _tiledMap = Content.Load<TiledMap>("Couloir"); //faudra ajouter le nom de la map
-             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            _tiledMap = Content.Load<TiledMap>("Couloir"); //faudra ajouter le nom de la map
+            _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //collisions
             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
 
@@ -260,17 +265,17 @@ namespace Jeu
             _eleve.Update(deltaSeconds);
 
             //deplacement prof
-            if (_chrono < 5)
-            {
-                animation2 = "tetebas";
-            }
-            if ( _chrono > 5)
-            {
+
+            if (_chrono >= 5+temps)
                 animation2 = "tetehaut";
-                    
-                if (_chrono > 10)
-                    _chrono = 0;
+            if (_chrono >= temps+10)
+            {
+                _chrono = 0;
+                temps = tete.Next(0, 10);
             }
+            if (_chrono < 5+temps)
+                animation2 = "tetebas";
+
 
             _chrono += deltaSeconds;
             _prof.Update(deltaSeconds);
