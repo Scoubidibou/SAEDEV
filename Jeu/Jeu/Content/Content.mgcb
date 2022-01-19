@@ -123,6 +123,12 @@
 /processorParam:TextureFormat=Color
 /build:Sans titre.png
 
+#begin sonJeu.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sonJeu.mp3
+
 #begin spritePerso.png
 /importer:TextureImporter
 /processor:TextureProcessor

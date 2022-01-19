@@ -2,7 +2,7 @@
 <map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="8" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
  <tileset firstgid="1" source="Toilette.tsx"/>
  <tileset firstgid="2" source="tiles_cus_shanktonstatepen.tsx"/>
- <tileset firstgid="102" source="P:/R1.01_DEV/sae/sae/Jeu/Jeu/Content/tiles_cus_shanktonstatepen.tsx"/>
+ <tileset firstgid="102" source="C:/Users/Lola/Source/Repos/SAEDEV/Jeu/Jeu/Content/tiles_cus_shanktonstatepen.tsx"/>
  <layer id="1" name="Sol" width="8" height="15">
   <data encoding="csv">
 4,4,4,4,4,4,4,4,
