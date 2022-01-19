@@ -30,6 +30,7 @@ namespace Jeu
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRendu;
         private TiledMapTileLayer _tiledMapObstacles;
+        private TiledMapTileLayer _tilesMapCoffre;
 
         //Collisions
         //private TiledMapTileLayer mapLayer;
@@ -44,6 +45,12 @@ namespace Jeu
         private AnimatedSprite _prof;
         private TypeAnimation _animation;
         private float _chrono;
+
+
+        private Vector2 _CoeurPosition;
+        private Vector2 _CoeurPosition1;
+        private Vector2 _CoeurPosition2;
+        private AnimatedSprite _CoeurRouge;
 
         //random prof
         private Random tete = new Random();
@@ -188,7 +195,7 @@ namespace Jeu
             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
             //collisions
             _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
-
+            _tilesMapCoffre = _tiledMap.GetLayer<TiledMapTileLayer>("Coffre");
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
@@ -199,6 +206,11 @@ namespace Jeu
             _prof = new AnimatedSprite(spriteSheet2);
             _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
+            SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
+            _CoeurRouge = new AnimatedSprite(spriteSheet3);
+            _CoeurPosition = new Vector2(580, 10);
+            _CoeurPosition1 = new Vector2(560, 10);
+            _CoeurPosition2 = new Vector2(540, 10);
             //on met le couloir comme map principale
             //_screenManager.LoadScreen(_screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
             _ecranEncours = Ecran.Principal;
@@ -335,6 +347,9 @@ namespace Jeu
             _spriteBatch.Draw(_eleve, _elevePosition);
             _spriteBatch.Draw(_prof, _profPosition);
 
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition);
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);
             //map
             _tiledMapRendu.Draw();
 
