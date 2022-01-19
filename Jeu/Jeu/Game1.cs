@@ -46,7 +46,7 @@ namespace Jeu
         private TypeAnimation _animation;
         private float _chrono;
 
-        //???
+        //random prof
         private Random tete = new Random();
         private int temps;
 
