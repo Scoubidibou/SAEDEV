@@ -8,6 +8,7 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
 using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
+using Microsoft.Xna.Framework.Media;
 using System;
 
 
@@ -58,6 +59,9 @@ namespace Jeu
 
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
+
+        //son
+        private Song _sonJeu;
 
         private Ecran _ecranEncours;
 
@@ -214,6 +218,11 @@ namespace Jeu
             //on met le couloir comme map principale
             //_screenManager.LoadScreen(_screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
             _ecranEncours = Ecran.Principal;
+
+            //son
+            _sonJeu = Content.Load<Song>("sonJeu");
+            MediaPlayer.Play(_sonJeu);
+
         }
 
         protected override void Update(GameTime gameTime)
