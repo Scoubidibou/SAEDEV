@@ -382,8 +382,9 @@ namespace Jeu
         private void LoadScreen1()
         {
             _screenManager.LoadScreen(new ScreenMapSalle1(this), new FadeTransition(GraphicsDevice, Color.Black));
+
         }
-        private void LoadScreen2()
+            private void LoadScreen2()
         {
             _screenManager.LoadScreen(new ScreenMapSalle2(this), new FadeTransition(GraphicsDevice, Color.Black));
         }

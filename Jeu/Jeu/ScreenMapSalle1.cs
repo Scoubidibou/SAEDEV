@@ -18,6 +18,8 @@ namespace Jeu
 {
     public class ScreenMapSalle1 : GameScreen
     {
+        private new Game1 Game => (Game1)base.Game; // pour récupérer le jeu en cours
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -46,6 +48,7 @@ namespace Jeu
         private TypeAnimation _animation;
         private float _chrono;
 
+
         private Vector2 _CoeurPosition;
         private Vector2 _CoeurPosition1;
         private Vector2 _CoeurPosition2;
@@ -62,104 +65,15 @@ namespace Jeu
         private Song _sonJeu;
 
         private Ecran _ecranEncours;
-        public SpriteBatch SpriteBatch
-        {
-            get
-            {
-                return this._spriteBatch;
-            }
 
-            set
-            {
-                this._spriteBatch = value;
-            }
+        public ScreenMapSalle1(Game game) : base(game)
+        {
         }
 
-        public AnimatedSprite Eleve
-        {
-            get
-            {
-                return this._eleve;
-            }
-
-            set
-            {
-                this._eleve = value;
-            }
-        }
-
-        public AnimatedSprite Prof
-        {
-            get
-            {
-                return this._prof;
-            }
-
-            set
-            {
-                this._prof = value;
-            }
-        }
-
-        public Vector2 PositionEleve
-        {
-            get
-            {
-                return this._elevePosition;
-            }
-
-            set
-            {
-                this._elevePosition = value;
-            }
-        }
-        public Vector2 PositionProf
-        {
-            get
-            {
-                return this._profPosition;
-            }
-
-            set
-            {
-                this._profPosition = value;
-            }
-        }
-
-        public TypeAnimation Animation
-        {
-            get
-            {
-                return this._animation;
-            }
-
-            set
-            {
-                this._animation = value;
-            }
-        }
-
-        public GraphicsDeviceManager Graphics
-        {
-            get
-            {
-                return this._graphics;
-            }
-
-            set
-            {
-                this._graphics = value;
-            }
-        }
-
-        private Game1 _myGame; // pour récupérer le jeu en cours
-        public ScreenMapSalle1(Game1 game) : base(game)
-        {
-            Content.RootDirectory = "Content";
-            _myGame = game;
-        }
         public override void LoadContent()
         {
+            
+            base.LoadContent();
             //map
             _tiledMap = Content.Load<TiledMap>("SalleDeCour8"); //faudra ajouter le nom de la map
             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
@@ -176,9 +90,7 @@ namespace Jeu
             //spritesheet prof
             SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
             _prof = new AnimatedSprite(spriteSheet2);
-            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
-            
+            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);      
 
             SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
@@ -188,7 +100,7 @@ namespace Jeu
 
             _sonJeu = Content.Load<Song>("sonJeu");
             MediaPlayer.Play(_sonJeu);
-            base.LoadContent();
+            
         }
         public override void Update(GameTime gameTime)
         {
@@ -279,16 +191,16 @@ namespace Jeu
 
         public override void Draw(GameTime gameTime)
         {
-            _myGame.SpriteBatch.Begin();
-            _spriteBatch.Draw(_eleve, _elevePosition);
+            Game.SpriteBatch.Begin();
+            /*_spriteBatch.Draw(_eleve, _elevePosition);
             _spriteBatch.Draw(_prof, _profPosition);
 
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition);
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
-            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);*/
 
             _tiledMapRendu.Draw();
-            _myGame.SpriteBatch.End();
+            Game.SpriteBatch.End();
         }
         private bool IsCollision(ushort x, ushort y)
         {
