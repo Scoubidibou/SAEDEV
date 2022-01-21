@@ -17,6 +17,9 @@ namespace Jeu
     {
         private Game1 _game1; // pour récupérer la fenêtre de jeu principale
 
+        public static int FENETRE_LARGEUR { get; internal set; }
+        public static int FENETRE_HAUTEUR { get; internal set; }
+
         public ScreenMapPrincipale(Game1 game) : base(game)
         {
             _game1 = game;

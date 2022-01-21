@@ -10,6 +10,8 @@ using MonoGame.Extended.Serialization;
 using MonoGame.Extended.Sprites;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Renderers;
+using MonoGame.Extended.Screens.Transitions;
+using Microsoft.Xna.Framework.Media;
 
 
 namespace Jeu
@@ -28,6 +30,7 @@ namespace Jeu
         private TiledMap _tiledMap;
         private TiledMapRenderer _tiledMapRendu;
         private TiledMapTileLayer _tiledMapObstacles;
+        private TiledMapTileLayer _tilesMapCoffre;
 
         //Collisions
         //private TiledMapTileLayer mapLayer;
@@ -43,12 +46,20 @@ namespace Jeu
         private TypeAnimation _animation;
         private float _chrono;
 
+        private Vector2 _CoeurPosition;
+        private Vector2 _CoeurPosition1;
+        private Vector2 _CoeurPosition2;
+        private AnimatedSprite _CoeurRouge;
+
         //random prof
         private Random tete = new Random();
         private int temps;
 
         //gestionnaire de scènes
         private readonly ScreenManager _screenManager;
+
+        //son
+        private Song _sonJeu;
 
         private Ecran _ecranEncours;
         public SpriteBatch SpriteBatch
@@ -145,12 +156,18 @@ namespace Jeu
         public ScreenMapSalle1(Game1 game) : base(game)
         {
             Content.RootDirectory = "Content";
-
             _myGame = game;
         }
-
         public override void LoadContent()
         {
+            //map
+            _tiledMap = Content.Load<TiledMap>("SalleDeCour8"); //faudra ajouter le nom de la map
+            _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+
+            //collisions
+            _tiledMapObstacles = _tiledMap.GetLayer<TiledMapTileLayer>("Mur");
+            _tilesMapCoffre = _tiledMap.GetLayer<TiledMapTileLayer>("Coffre");
+
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
@@ -161,8 +178,16 @@ namespace Jeu
             _prof = new AnimatedSprite(spriteSheet2);
             _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
-            _tiledMap = Content.Load<TiledMap>("salleDeCour8"); //faudra ajouter le nom de la map
-            _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
+            
+
+            SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
+            _CoeurRouge = new AnimatedSprite(spriteSheet3);
+            _CoeurPosition = new Vector2(580, 10);
+            _CoeurPosition1 = new Vector2(560, 10);
+            _CoeurPosition2 = new Vector2(540, 10);
+
+            _sonJeu = Content.Load<Song>("sonJeu");
+            MediaPlayer.Play(_sonJeu);
             base.LoadContent();
         }
         public override void Update(GameTime gameTime)
@@ -258,7 +283,10 @@ namespace Jeu
             _spriteBatch.Draw(_eleve, _elevePosition);
             _spriteBatch.Draw(_prof, _profPosition);
 
-            
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition);
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
+            _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);
+
             _tiledMapRendu.Draw();
             _myGame.SpriteBatch.End();
         }

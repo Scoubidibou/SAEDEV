@@ -10,7 +10,7 @@ using MonoGame.Extended.Screens;
 using MonoGame.Extended.Screens.Transitions;
 using Microsoft.Xna.Framework.Media;
 using System;
-
+using Microsoft.Xna.Framework.Content;
 
 namespace Jeu
 {
