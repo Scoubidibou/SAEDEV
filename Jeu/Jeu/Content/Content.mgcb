@@ -10,11 +10,11 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:C:\Users\chamolet\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Content.Pipeline.dll
-/reference:C:\Users\chamolet\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.dll
-/reference:C:\Users\chamolet\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Graphics.dll
-/reference:C:\Users\chamolet\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Tiled.dll
-/reference:C:\Users\chamolet\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\Newtonsoft.Json.dll
+/reference:..\..\..\..\..\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Content.Pipeline.dll
+/reference:..\..\..\..\..\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.dll
+/reference:..\..\..\..\..\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Graphics.dll
+/reference:..\..\..\..\..\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\MonoGame.Extended.Tiled.dll
+/reference:..\..\..\..\..\.nuget\packages\monogame.extended.content.pipeline\3.8.0\tools\Newtonsoft.Json.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -110,6 +110,11 @@
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /build:salleDeCour8.tmx
+
+#begin salleDeCourTest.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:salleDeCourTest.tmx
 
 #begin Sans titre.png
 /importer:TextureImporter

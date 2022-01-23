@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="38" height="39" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="1">
+ <tileset firstgid="1" source="tiles_cus_shanktonstatepen.tsx"/>
+ <tileset firstgid="101" source="Sans titre.tsx"/>
+ <tileset firstgid="102" source="table.tsx"/>
+ <tileset firstgid="103" source="chaise3.tsx"/>
+ <tileset firstgid="104" source="bureau.tsx"/>
+ <layer id="6" name="Calque de Tuiles 1" width="38" height="39">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMBKGD7995Qabgqqmqqqqq6tMHWgMRXw==
+  </data>
+ </layer>
+</map>

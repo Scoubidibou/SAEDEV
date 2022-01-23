@@ -72,10 +72,10 @@ namespace Jeu
 
         public override void LoadContent()
         {
-            
+
             base.LoadContent();
             //map
-            _tiledMap = Content.Load<TiledMap>("SalleDeCour8"); //faudra ajouter le nom de la map
+            _tiledMap = Content.Load<TiledMap>("SalleDeCour4"); //faudra ajouter le nom de la map
             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
 
             //collisions
@@ -90,7 +90,7 @@ namespace Jeu
             //spritesheet prof
             SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
             _prof = new AnimatedSprite(spriteSheet2);
-            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);      
+            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
             SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
@@ -100,7 +100,7 @@ namespace Jeu
 
             _sonJeu = Content.Load<Song>("sonJeu");
             MediaPlayer.Play(_sonJeu);
-            
+
         }
         public override void Update(GameTime gameTime)
         {
