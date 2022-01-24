@@ -68,6 +68,7 @@ namespace Jeu
 
         public ScreenMapSalle2(Game game) : base(game)
         {
+            _ecranEncours = Ecran.Salle2;
         }
 
         public override void LoadContent()

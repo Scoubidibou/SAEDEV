@@ -75,7 +75,7 @@ namespace Jeu
 
             base.LoadContent();
             //map
-            _tiledMap = Content.Load<TiledMap>("SalleDeCour8"); //faudra ajouter le nom de la map
+            _tiledMap = Content.Load<TiledMap>("SalleDeCour4"); //faudra ajouter le nom de la map
             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
 
             //collisions

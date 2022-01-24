@@ -214,8 +214,6 @@ namespace Jeu
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
             _CoeurPosition = new Vector2(580, 10);
             _CoeurPosition1 = new Vector2(560, 10);
-            _CoeurPosition2 = new Vector2(540, 10);
-            //on met le couloir comme map principale
             //_screenManager.LoadScreen(_screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
             _ecranEncours = Ecran.Principal;
 
@@ -298,14 +296,14 @@ namespace Jeu
 
             //deplacement prof
 
-            if (_chrono >= 5+temps)
+            if (_chrono >= 5 + temps)
                 animation2 = "tetehaut";
-            if (_chrono >= temps+10)
+            if (_chrono >= temps + 10)
             {
                 _chrono = 0;
                 temps = tete.Next(0, 10);
             }
-            if (_chrono < 5+temps)
+            if (_chrono < 5 + temps)
                 animation2 = "tetebas";
 
 
@@ -315,30 +313,36 @@ namespace Jeu
 
 
             //changements de maps
-            if (keyboardState.IsKeyDown(Keys.A))
-            {
+            if (_elevePosition.X >= 340 && _elevePosition.Y >= 512)
+            {              
                 LoadScreen1();
+                _elevePosition = new Vector2(300, 300);
             }
-            if (keyboardState.IsKeyDown(Keys.B))
+            if (_elevePosition.X >= 120 && _elevePosition.Y >= 183)
             {
                 LoadScreen2();
+                _elevePosition = new Vector2(300, 300);
             }
-            if (keyboardState.IsKeyDown(Keys.C))
+            /*if (_elevePosition.X >= 22 && _elevePosition.Y >= 109)
             {
                 LoadScreen3();
+                _elevePosition = new Vector2(300, 300);
             }
-            if (keyboardState.IsKeyDown(Keys.D))
+            if (_elevePosition.X >= 120 && _elevePosition.Y >= 109)
             {
                 LoadScreen4();
+                _elevePosition = new Vector2(300, 300);
             }
-            if (keyboardState.IsKeyDown(Keys.E))
+            if (_elevePosition.X >= 22 && _elevePosition.Y >= 183)
             {
                 LoadScreen5();
+                _elevePosition = new Vector2(300, 300);
             }
-            if (keyboardState.IsKeyDown(Keys.F))
+            if (_elevePosition.X >= 490 && _elevePosition.Y >= 120)
             {
-                LoadScreen6();
-            }
+                LoadScreen6(); 
+                _elevePosition = new Vector2(300, 300);
+            }*/
 
             base.Update(gameTime);
 
@@ -384,25 +388,31 @@ namespace Jeu
             _screenManager.LoadScreen(new ScreenMapSalle1(this), new FadeTransition(GraphicsDevice, Color.Black));
 
         }
-            private void LoadScreen2()
+
+        private void LoadScreen2()
         {
             _screenManager.LoadScreen(new ScreenMapSalle2(this), new FadeTransition(GraphicsDevice, Color.Black));
+
         }
-        private void LoadScreen3()
+        /*private void LoadScreen3()
         {
             _screenManager.LoadScreen(new ScreenMapSalle3(this), new FadeTransition(GraphicsDevice, Color.Black));
+
         }
         private void LoadScreen4()
         {
             _screenManager.LoadScreen(new ScreenMapSalle4(this), new FadeTransition(GraphicsDevice, Color.Black));
+
         }
         private void LoadScreen5()
         {
             _screenManager.LoadScreen(new ScreenMapSalle5(this), new FadeTransition(GraphicsDevice, Color.Black));
+
         }
         private void LoadScreen6()
         {
             _screenManager.LoadScreen(new ScreenMapSalle6(this), new FadeTransition(GraphicsDevice, Color.Black));
-        }
+
+        }*/
     }
 }
