@@ -52,6 +52,7 @@ namespace Jeu
         private Vector2 _CoeurPosition1;
         private Vector2 _CoeurPosition2;
         private AnimatedSprite _CoeurRouge;
+        private AnimatedSprite _CoeurNoir;
 
         //random prof
         private Random tete = new Random();
@@ -214,6 +215,11 @@ namespace Jeu
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
             _CoeurPosition = new Vector2(580, 10);
             _CoeurPosition1 = new Vector2(560, 10);
+            _CoeurPosition2 = new Vector2(540, 10);
+
+            SpriteSheet spriteSheet4 = Content.Load<SpriteSheet>("motw_coeurN.sf", new JsonContentLoader());
+            _CoeurNoir = new AnimatedSprite(spriteSheet3);
+
             //_screenManager.LoadScreen(_screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
             _ecranEncours = Ecran.Principal;
 
@@ -291,7 +297,7 @@ namespace Jeu
                 }
             }
 
-            _eleve.Play(animation);
+                _eleve.Play(animation);
             _eleve.Update(deltaSeconds);
 
             //deplacement prof
@@ -310,6 +316,14 @@ namespace Jeu
             _chrono += deltaSeconds;
             _prof.Update(deltaSeconds);
             _prof.Play(animation2);
+            //ia prof
+            if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.Up)) || keyboardState.IsKeyDown(Keys.Down))
+            {
+                if (animation2 == "tetehaut")
+                {
+                    _CoeurPosition = new Vector2(999,999);
+                }
+            }
 
 
             //changements de maps
@@ -318,12 +332,12 @@ namespace Jeu
                 LoadScreen1();
                 _elevePosition = new Vector2(300, 300);
             }
-            if (_elevePosition.X >= 120 && _elevePosition.Y >= 183)
+            /*if (_elevePosition.X >= 120 && _elevePosition.Y >= 183)
             {
                 LoadScreen2();
                 _elevePosition = new Vector2(300, 300);
             }
-            /*if (_elevePosition.X >= 22 && _elevePosition.Y >= 109)
+            if (_elevePosition.X >= 22 && _elevePosition.Y >= 109)
             {
                 LoadScreen3();
                 _elevePosition = new Vector2(300, 300);
@@ -389,12 +403,12 @@ namespace Jeu
 
         }
 
-        private void LoadScreen2()
+        /*private void LoadScreen2()
         {
             _screenManager.LoadScreen(new ScreenMapSalle2(this), new FadeTransition(GraphicsDevice, Color.Black));
 
         }
-        /*private void LoadScreen3()
+        private void LoadScreen3()
         {
             _screenManager.LoadScreen(new ScreenMapSalle3(this), new FadeTransition(GraphicsDevice, Color.Black));
 
