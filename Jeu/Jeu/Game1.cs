@@ -14,7 +14,9 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Jeu
 {
-    public enum Ecran { Principal, Salle1, Salle2, Salle3, Salle4, Salle5, Salle6,
+    public enum Ecran
+    {
+        Principal, Salle1, Salle2, Salle3, Salle4, Salle5, Salle6,
         SallePrincipale
     }
     public enum TypeAnimation { walkSouth, walkNorth, walkEast, walkWest, idle };
@@ -175,7 +177,7 @@ namespace Jeu
             // TODO: Add your initialization logic here
 
             //faire une classe pour la map principale
-            //_elevePosition = new Vector2(ScreenMapPrincipale.WIDTH_FENETRE / 2, ScreenMapPrincipale.HEIGHT_FENETRE / 2);
+            _elevePosition = new Vector2(300, 300);
             base.Initialize();
 
             //fenêtre
@@ -295,7 +297,7 @@ namespace Jeu
                 }
             }
 
-                _eleve.Play(animation);
+            _eleve.Play(animation);
             _eleve.Update(deltaSeconds);
 
             //deplacement prof
@@ -318,50 +320,86 @@ namespace Jeu
             {
                 if (animation2 == "tetehaut")
                 {
-                    _CoeurPosition = new Vector2(999,999);
+                    _CoeurPosition = new Vector2(999, 999);
                 }
             }
 
             Console.WriteLine(PositionEleve);
             //changements de maps
 
-            if (_elevePosition.X >= 165 && _elevePosition.X <= 180  && _elevePosition.Y >= 250 && _elevePosition.Y <= 295 && (keyboardState.IsKeyDown(Keys.Left)))
-            {
-                LoadScreen0();
-                _ecranEncours = Ecran.SallePrincipale;
-                _elevePosition = new Vector2(300,300);
-            }
 
-            else if (_elevePosition.X >= 340 && _elevePosition.X <= 350 &&  _elevePosition.Y >= 495 && _elevePosition.Y <= 550)
-            {              
+
+            if (_elevePosition.X >= 340 && _elevePosition.X <= 350 && _elevePosition.Y >= 495 && _elevePosition.Y <= 550)
+            {
                 LoadScreen1();
                 _ecranEncours = Ecran.Salle1;
                 _elevePosition = new Vector2(170, 280);
+                if (_elevePosition.X >= 165 && _elevePosition.X <= 180 && _elevePosition.Y >= 250 && _elevePosition.Y <= 295 && (keyboardState.IsKeyDown(Keys.Left)))
+                {
+                    LoadScreen0();
+                    _ecranEncours = Ecran.SallePrincipale;
+                    _elevePosition = new Vector2(300, 300);
+                }
             }
             else if (_elevePosition.X >= 112 && _elevePosition.Y <= 160 && _elevePosition.X <= 125 && _elevePosition.Y >= 205)
             {
                 LoadScreen2();
+                _ecranEncours = Ecran.Salle2;
                 _elevePosition = new Vector2(300, 300);
+                if (_elevePosition.X >= 165 && _elevePosition.X <= 180 && _elevePosition.Y >= 250 && _elevePosition.Y <= 295 && (keyboardState.IsKeyDown(Keys.Left)))
+                {
+                    LoadScreen0();
+                    _ecranEncours = Ecran.SallePrincipale;
+                    _elevePosition = new Vector2(300, 300);
+                }
             }
-            else if(_elevePosition.X >= 15 && _elevePosition.Y >= 80 && _elevePosition.X <= 35 && _elevePosition.Y <= 125)
+            else if (_elevePosition.X >= 15 && _elevePosition.Y >= 80 && _elevePosition.X <= 35 && _elevePosition.Y <= 125)
             {
                 LoadScreen3();
-                _elevePosition = new Vector2(300, 300);
+                _ecranEncours = Ecran.Salle3;
+                _elevePosition = new Vector2(320, 190);
+                if (_elevePosition.X >= 310 && _elevePosition.X <= 330 && _elevePosition.Y >= 180 && _elevePosition.Y <= 200 && (keyboardState.IsKeyDown(Keys.Left)))
+                {
+                    LoadScreen0();
+                    _ecranEncours = Ecran.SallePrincipale;
+                    _elevePosition = new Vector2(300, 300);
+                }
             }
-            else if(_elevePosition.X >= 110 && _elevePosition.Y >= 80 &&_elevePosition.X <= 130 && _elevePosition.Y <= 125)
+            else if (_elevePosition.X >= 110 && _elevePosition.Y >= 80 && _elevePosition.X <= 130 && _elevePosition.Y <= 125)
             {
                 LoadScreen4();
-                _elevePosition = new Vector2(300, 300);
+                _ecranEncours = Ecran.Salle4;
+                _elevePosition = new Vector2(170, 240);
+                if (_elevePosition.X >= 160 && _elevePosition.X <= 180 && _elevePosition.Y >= 230 && _elevePosition.Y <= 250 && (keyboardState.IsKeyDown(Keys.Left)))
+                {
+                    LoadScreen0();
+                    _ecranEncours = Ecran.SallePrincipale;
+                    _elevePosition = new Vector2(300, 300);
+                }
             }
-            else if(_elevePosition.X >= 15 && _elevePosition.Y >= 160 && _elevePosition.X <= 35 && _elevePosition.Y <= 208)
+            else if (_elevePosition.X >= 15 && _elevePosition.Y >= 160 && _elevePosition.X <= 35 && _elevePosition.Y <= 208)
             {
                 LoadScreen5();
-                _elevePosition = new Vector2(300, 300);
+                _ecranEncours = Ecran.Salle5;
+                _elevePosition = new Vector2(470, 250);
+                if (_elevePosition.X >= 460 && _elevePosition.X <= 480 && _elevePosition.Y >= 240 && _elevePosition.Y <= 260 && (keyboardState.IsKeyDown(Keys.Left)))
+                {
+                    LoadScreen0();
+                    _ecranEncours = Ecran.SallePrincipale;
+                    _elevePosition = new Vector2(300, 300);
+                }
             }
-            else if(_elevePosition.X >= 480 && _elevePosition.Y <= 120)
+            else if (_elevePosition.X >= 480 && _elevePosition.Y <= 120)
             {
-                LoadScreen6(); 
-                _elevePosition = new Vector2(300, 300);
+                LoadScreen6();
+                _ecranEncours = Ecran.Salle6;
+                _elevePosition = new Vector2(280, 390);
+                if (_elevePosition.X >= 270 && _elevePosition.X <= 290 && _elevePosition.Y >= 380 && _elevePosition.Y <= 400 && (keyboardState.IsKeyDown(Keys.Left)))
+                {
+                    LoadScreen0();
+                    _ecranEncours = Ecran.SallePrincipale;
+                    _elevePosition = new Vector2(300, 300);
+                }
             }
 
             base.Update(gameTime);
@@ -443,6 +481,6 @@ namespace Jeu
             _screenManager.LoadScreen(new ScreenMapSalle6(this), new FadeTransition(GraphicsDevice, Color.Black));
 
         }
-        
+
     }
 }

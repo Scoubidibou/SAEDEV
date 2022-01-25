@@ -98,7 +98,6 @@ namespace Jeu
             _CoeurNoir = new AnimatedSprite(spriteSheet3);
 
             //_screenManager.LoadScreen(_screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
-            _ecranEncours = Ecran.Principal;
             _eleveVitesse = 100;
             //son
             _sonJeu = Content.Load<Song>("sonJeu");
