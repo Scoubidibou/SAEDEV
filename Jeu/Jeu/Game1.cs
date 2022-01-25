@@ -14,7 +14,9 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Jeu
 {
-    public enum Ecran { Principal, Salle1, Salle2, Salle3, Salle4, Salle5, Salle6 };
+    public enum Ecran { Principal, Salle1, Salle2, Salle3, Salle4, Salle5, Salle6,
+        SallePrincipale
+    }
     public enum TypeAnimation { walkSouth, walkNorth, walkEast, walkWest, idle };
 
     public class Game1 : Game
@@ -65,6 +67,7 @@ namespace Jeu
         private Song _sonJeu;
 
         private Ecran _ecranEncours;
+        internal object spriteBatch;
 
         public SpriteBatch SpriteBatch
         {
@@ -206,11 +209,6 @@ namespace Jeu
             _eleve = new AnimatedSprite(spriteSheet);
             _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
-            //spritesheet prof
-            SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
-            _prof = new AnimatedSprite(spriteSheet2);
-            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
             SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
             _CoeurPosition = new Vector2(580, 10);
@@ -314,8 +312,7 @@ namespace Jeu
 
 
             _chrono += deltaSeconds;
-            _prof.Update(deltaSeconds);
-            _prof.Play(animation2);
+
             //ia prof
             if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.Up)) || keyboardState.IsKeyDown(Keys.Down))
             {
@@ -327,10 +324,19 @@ namespace Jeu
 
             Console.WriteLine(PositionEleve);
             //changements de maps
-            if (_elevePosition.X >= 340 && _elevePosition.X <= 350 &&  _elevePosition.Y >= 495 && _elevePosition.Y <= 550)
+
+            if (_elevePosition.X >= 165 && _elevePosition.X <= 180  && _elevePosition.Y >= 250 && _elevePosition.Y <= 295 && (keyboardState.IsKeyDown(Keys.Left)))
+            {
+                LoadScreen0();
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300,300);
+            }
+
+            else if (_elevePosition.X >= 340 && _elevePosition.X <= 350 &&  _elevePosition.Y >= 495 && _elevePosition.Y <= 550)
             {              
                 LoadScreen1();
-                _elevePosition = new Vector2(300, 300);
+                _ecranEncours = Ecran.Salle1;
+                _elevePosition = new Vector2(170, 280);
             }
             else if (_elevePosition.X >= 112 && _elevePosition.Y <= 160 && _elevePosition.X <= 125 && _elevePosition.Y >= 205)
             {
@@ -374,7 +380,6 @@ namespace Jeu
 
             //personnages
             _spriteBatch.Draw(_eleve, _elevePosition);
-            _spriteBatch.Draw(_prof, _profPosition);
 
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition);
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
@@ -402,6 +407,11 @@ namespace Jeu
         //    _screenManager.LoadScreen(this, new FadeTransition(GraphicsDevice, Color.Black));
 
         //}
+        private void LoadScreen0()
+        {
+            _screenManager.LoadScreen(new ScreenMapPrincipale(this), new FadeTransition(GraphicsDevice, Color.Black));
+
+        }
         private void LoadScreen1()
         {
             _screenManager.LoadScreen(new ScreenMapSalle1(this), new FadeTransition(GraphicsDevice, Color.Black));

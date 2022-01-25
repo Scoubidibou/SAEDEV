@@ -85,7 +85,7 @@ namespace Jeu
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
-            _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            _elevePosition = new Vector2(320,190);
 
             //spritesheet prof
             SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
