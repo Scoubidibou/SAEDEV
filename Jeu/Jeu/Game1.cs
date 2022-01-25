@@ -325,38 +325,38 @@ namespace Jeu
                 }
             }
 
-
+            Console.WriteLine(PositionEleve);
             //changements de maps
-            if (_elevePosition.X >= 340 && _elevePosition.Y >= 512)
+            if (_elevePosition.X >= 340 && _elevePosition.X <= 350 &&  _elevePosition.Y >= 495 && _elevePosition.Y <= 550)
             {              
                 LoadScreen1();
                 _elevePosition = new Vector2(300, 300);
             }
-            /*if (_elevePosition.X >= 120 && _elevePosition.Y >= 183)
+            else if (_elevePosition.X >= 112 && _elevePosition.Y <= 160 && _elevePosition.X <= 125 && _elevePosition.Y >= 205)
             {
                 LoadScreen2();
                 _elevePosition = new Vector2(300, 300);
             }
-            if (_elevePosition.X >= 22 && _elevePosition.Y >= 109)
+            else if(_elevePosition.X >= 15 && _elevePosition.Y >= 80 && _elevePosition.X <= 35 && _elevePosition.Y <= 125)
             {
                 LoadScreen3();
                 _elevePosition = new Vector2(300, 300);
             }
-            if (_elevePosition.X >= 120 && _elevePosition.Y >= 109)
+            else if(_elevePosition.X >= 110 && _elevePosition.Y >= 80 &&_elevePosition.X <= 130 && _elevePosition.Y <= 125)
             {
                 LoadScreen4();
                 _elevePosition = new Vector2(300, 300);
             }
-            if (_elevePosition.X >= 22 && _elevePosition.Y >= 183)
+            else if(_elevePosition.X >= 15 && _elevePosition.Y >= 160 && _elevePosition.X <= 35 && _elevePosition.Y <= 208)
             {
                 LoadScreen5();
                 _elevePosition = new Vector2(300, 300);
             }
-            if (_elevePosition.X >= 490 && _elevePosition.Y >= 120)
+            else if(_elevePosition.X >= 480 && _elevePosition.Y <= 120)
             {
                 LoadScreen6(); 
                 _elevePosition = new Vector2(300, 300);
-            }*/
+            }
 
             base.Update(gameTime);
 
@@ -369,6 +369,8 @@ namespace Jeu
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin();
+            //map
+            _tiledMapRendu.Draw();
 
             //personnages
             _spriteBatch.Draw(_eleve, _elevePosition);
@@ -377,8 +379,6 @@ namespace Jeu
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition);
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);
-            //map
-            _tiledMapRendu.Draw();
 
             _spriteBatch.End();
 
@@ -397,13 +397,18 @@ namespace Jeu
         }
 
         //méthodes pour load les différentes map
+        //private void LoadScreen0()
+        //{
+        //    _screenManager.LoadScreen(this, new FadeTransition(GraphicsDevice, Color.Black));
+
+        //}
         private void LoadScreen1()
         {
             _screenManager.LoadScreen(new ScreenMapSalle1(this), new FadeTransition(GraphicsDevice, Color.Black));
 
         }
 
-        /*private void LoadScreen2()
+        private void LoadScreen2()
         {
             _screenManager.LoadScreen(new ScreenMapSalle2(this), new FadeTransition(GraphicsDevice, Color.Black));
 
@@ -427,6 +432,7 @@ namespace Jeu
         {
             _screenManager.LoadScreen(new ScreenMapSalle6(this), new FadeTransition(GraphicsDevice, Color.Black));
 
-        }*/
+        }
+        
     }
 }

@@ -72,10 +72,10 @@ namespace Jeu
 
         public override void LoadContent()
         {
-
+            _eleveVitesse = 100;
             base.LoadContent();
             //map
-            _tiledMap = Content.Load<TiledMap>("Toilette"); //faudra ajouter le nom de la map
+            _tiledMap = Content.Load<TiledMap>("ToiletteSalle"); //faudra ajouter le nom de la map
             _tiledMapRendu = new TiledMapRenderer(GraphicsDevice, _tiledMap);
 
             //collisions
@@ -85,12 +85,7 @@ namespace Jeu
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
-            _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
-
-            //spritesheet prof
-            SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
-            _prof = new AnimatedSprite(spriteSheet2);
-            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            _elevePosition = new Vector2(280,390);
 
             SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
@@ -125,10 +120,15 @@ namespace Jeu
                     ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight); //la tuile au-dessus en y
                     animation = "walkWest";
                     if (!IsCollision(tx, ty))
+                    {
+
                         _elevePosition.X -= walkSpeed; // _persoPosition vecteur position du sprite
+                    }
+
                 }
+
             }
-            if (keyboardState.IsKeyDown(Keys.Right))
+            else if (keyboardState.IsKeyDown(Keys.Right))
             {
 
                 if (_elevePosition.X <= FENETRE_HAUTEUR - _eleve.TextureRegion.Width / 2)
@@ -137,10 +137,15 @@ namespace Jeu
                     ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight);
                     animation = "walkEast";
                     if (!IsCollision(tx, ty))
+                    {
+                        //Console.WriteLine("droite");
                         _elevePosition.X += walkSpeed; // _persoPosition vecteur position du sprite
+                    }
+                    //else
+                    //    Console.WriteLine("g,nkalngvkzln bvjkzjkzn bjgzanjoz");
                 }
             }
-            if (keyboardState.IsKeyDown(Keys.Up))
+            else if (keyboardState.IsKeyDown(Keys.Up))
             {
 
                 if (_elevePosition.Y >= _eleve.TextureRegion.Height / 2)
@@ -149,10 +154,15 @@ namespace Jeu
                     ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight - 1); //la tuile au-dessus en y
                     animation = "walkNorth";
                     if (!IsCollision(tx, ty))
+                    {
+                        //Console.WriteLine("haut");
                         _elevePosition.Y -= walkSpeed; // _persoPosition vecteur position du sprite
+                    }
+                    //else
+                    //    Console.WriteLine("g,nkalngvkzln bvjkzjkzn bjgzanjoz");
                 }
             }
-            if (keyboardState.IsKeyDown(Keys.Down))
+            else if (keyboardState.IsKeyDown(Keys.Down))
             {
 
                 if (_elevePosition.Y <= FENETRE_HAUTEUR - _eleve.TextureRegion.Height / 2)
@@ -161,27 +171,17 @@ namespace Jeu
                     ushort ty = (ushort)(_elevePosition.Y / _tiledMap.TileHeight + 2); //la tuile au-dessus en y
                     animation = "walkSouth";
                     if (!IsCollision(tx, ty))
+                    {
+                        //Console.WriteLine("bas");
                         _elevePosition.Y += walkSpeed; // _persoPosition vecteur position du sprite
+                    }
+                    //else
+                    //    Console.WriteLine("g,nkalngvkzln bvjkzjkzn bjgzanjoz");
                 }
             }
-
+            //Console.WriteLine(_elevePosition);
             _eleve.Play(animation);
             _eleve.Update(deltaSeconds);
-
-            if (_chrono >= 5 + temps)
-                animation2 = "tetehaut";
-            if (_chrono >= temps + 10)
-            {
-                _chrono = 0;
-                temps = tete.Next(0, 10);
-            }
-            if (_chrono < 5 + temps)
-                animation2 = "tetebas";
-
-
-            _chrono += deltaSeconds;
-            _prof.Update(deltaSeconds);
-            _prof.Play(animation2);
         }
 
         private void Exit()
@@ -200,6 +200,13 @@ namespace Jeu
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);*/
 
             _tiledMapRendu.Draw();
+
+            //personnages
+            Game.SpriteBatch.Draw(_eleve, _elevePosition);
+
+            Game.SpriteBatch.Draw(_CoeurRouge, _CoeurPosition);
+            Game.SpriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
+            Game.SpriteBatch.Draw(_CoeurRouge, _CoeurPosition2);
             Game.SpriteBatch.End();
         }
         private bool IsCollision(ushort x, ushort y)

@@ -85,19 +85,19 @@ namespace Jeu
             //spritesheet élève
             SpriteSheet spriteSheet = Content.Load<SpriteSheet>("motw.sf", new JsonContentLoader());
             _eleve = new AnimatedSprite(spriteSheet);
-            _elevePosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            _elevePosition = new Vector2(170,340);
 
             //spritesheet prof
             SpriteSheet spriteSheet2 = Content.Load<SpriteSheet>("motw2.sf", new JsonContentLoader());
             _prof = new AnimatedSprite(spriteSheet2);
-            _profPosition = new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
+            _profPosition = new Vector2(320,250);
 
             SpriteSheet spriteSheet3 = Content.Load<SpriteSheet>("motw_coeurR.sf", new JsonContentLoader());
             _CoeurRouge = new AnimatedSprite(spriteSheet3);
             _CoeurPosition = new Vector2(580, 10);
             _CoeurPosition1 = new Vector2(560, 10);
             _CoeurPosition2 = new Vector2(540, 10);
-
+            _eleveVitesse = 100;
             _sonJeu = Content.Load<Song>("sonJeu");
             MediaPlayer.Play(_sonJeu);
 
@@ -182,6 +182,15 @@ namespace Jeu
             _chrono += deltaSeconds;
             _prof.Update(deltaSeconds);
             _prof.Play(animation2);
+
+            //ia prof
+            if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.Up)) || keyboardState.IsKeyDown(Keys.Down))
+            {
+                if (animation2 == "tetehaut")
+                {
+                    _CoeurPosition = new Vector2(999, 999);
+                }
+            }
         }
 
         private void Exit()
@@ -200,6 +209,14 @@ namespace Jeu
             _spriteBatch.Draw(_CoeurRouge, _CoeurPosition2);*/
 
             _tiledMapRendu.Draw();
+
+            //personnages
+            Game.SpriteBatch.Draw(_eleve, _elevePosition);
+            Game.SpriteBatch.Draw(_prof, _profPosition);
+
+            Game.SpriteBatch.Draw(_CoeurRouge, _CoeurPosition);
+            Game.SpriteBatch.Draw(_CoeurRouge, _CoeurPosition1);
+            Game.SpriteBatch.Draw(_CoeurRouge, _CoeurPosition2);
             Game.SpriteBatch.End();
         }
         private bool IsCollision(ushort x, ushort y)
