@@ -347,7 +347,7 @@ namespace Jeu
                 _elevePosition = new Vector2(300, 300);
             }
 
-            if ((_elevePosition.X >= 112 && _elevePosition.Y <= 160 && _elevePosition.X <= 125 && _elevePosition.Y >= 205) || (screenMapPrincipale.PositionEleve.X >= 112 && screenMapPrincipale.PositionEleve.Y <= 160 && screenMapPrincipale.PositionEleve.X <= 125 && screenMapPrincipale.PositionEleve.Y >= 205))
+            if ((_elevePosition.X >= 112 && _elevePosition.Y >= 160 && _elevePosition.X <= 125 && _elevePosition.Y <= 205) || (screenMapPrincipale.PositionEleve.X >= 112 && screenMapPrincipale.PositionEleve.Y <= 160 && screenMapPrincipale.PositionEleve.X <= 125 && screenMapPrincipale.PositionEleve.Y >= 205))
             {
                 LoadScreen2();
                 _ecranEncours = Ecran.Salle2;

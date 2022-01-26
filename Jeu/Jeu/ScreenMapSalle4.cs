@@ -197,9 +197,24 @@ namespace Jeu
             //ia prof
             if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.Up)) || keyboardState.IsKeyDown(Keys.Down))
             {
-                if (animation2 == "tetehaut")
+                if (animation2 == "tetehaut" && _CoeurPosition == new Vector2(580, 10))
                 {
                     _CoeurPosition = new Vector2(999, 999);
+                    _chrono = 0;
+                    animation2 = "tetebas";
+                }
+                if (animation2 == "tetehaut" && _CoeurPosition1 == new Vector2(950, 950))
+                {
+                    _CoeurPosition2 = new Vector2(930, 930);
+                    Exit();
+
+
+                }
+                if (animation2 == "tetehaut" && _CoeurPosition == new Vector2(999, 999) && _CoeurPosition2 == new Vector2(540, 10))
+                {
+                    _CoeurPosition1 = new Vector2(950, 950);
+                    _chrono = 0;
+                    animation2 = "tetebas";
                 }
             }
         }
