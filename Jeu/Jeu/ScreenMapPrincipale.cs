@@ -70,6 +70,18 @@ namespace Jeu
         {
             
         }
+        public Vector2 PositionEleve
+        {
+            get
+            {
+                return this._elevePosition;
+            }
+
+            set
+            {
+                this._elevePosition = value;
+            }
+        }
         public override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);

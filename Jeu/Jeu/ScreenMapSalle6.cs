@@ -69,6 +69,18 @@ namespace Jeu
         public ScreenMapSalle6(Game game) : base(game)
         {
         }
+        public Vector2 PositionEleve
+        {
+            get
+            {
+                return this._elevePosition;
+            }
+
+            set
+            {
+                this._elevePosition = value;
+            }
+        }
 
         public override void LoadContent()
         {

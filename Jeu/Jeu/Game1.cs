@@ -71,6 +71,15 @@ namespace Jeu
         private Ecran _ecranEncours;
         internal object spriteBatch;
 
+        //test
+        ScreenMapPrincipale screenMapPrincipale;
+        ScreenMapSalle1 screenMap1;
+        ScreenMapSalle2 screenMap2;
+        ScreenMapSalle3 screenMap3;
+        ScreenMapSalle4 screenMap4;
+        ScreenMapSalle5 screenMap5;
+        ScreenMapSalle6 screenMap6;
+
         public SpriteBatch SpriteBatch
         {
             get
@@ -227,6 +236,13 @@ namespace Jeu
             _sonJeu = Content.Load<Song>("sonJeu");
             MediaPlayer.Play(_sonJeu);
 
+            screenMapPrincipale = new ScreenMapPrincipale(this);
+            screenMap6 = new ScreenMapSalle6(this);
+            screenMap1 = new ScreenMapSalle1(this);
+            screenMap2 = new ScreenMapSalle2(this);
+            screenMap3 = new ScreenMapSalle3(this);
+            screenMap4 = new ScreenMapSalle4(this);
+            screenMap5 = new ScreenMapSalle5(this);
         }
 
         protected override void Update(GameTime gameTime)
@@ -300,106 +316,108 @@ namespace Jeu
             _eleve.Play(animation);
             _eleve.Update(deltaSeconds);
 
-            //deplacement prof
-
-            if (_chrono >= 5 + temps)
-                animation2 = "tetehaut";
-            if (_chrono >= temps + 10)
-            {
-                _chrono = 0;
-                temps = tete.Next(0, 10);
-            }
-            if (_chrono < 5 + temps)
-                animation2 = "tetebas";
-
-
-            _chrono += deltaSeconds;
-
-            //ia prof
-            if ((keyboardState.IsKeyDown(Keys.Left)) || (keyboardState.IsKeyDown(Keys.Right)) || (keyboardState.IsKeyDown(Keys.Up)) || keyboardState.IsKeyDown(Keys.Down))
-            {
-                if (animation2 == "tetehaut")
-                {
-                    _CoeurPosition = new Vector2(999, 999);
-                }
-            }
-
-            Console.WriteLine(PositionEleve);
+            if (_ecranEncours == Ecran.Salle6)
+                Console.WriteLine(screenMap6.PositionEleve);
             //changements de maps
 
+            //retour piece 0 depuis map1
+            if ((screenMap1.PositionEleve.X >= 165 && screenMap1.PositionEleve.X <= 180 && screenMap1.PositionEleve.Y >= 250 && screenMap1.PositionEleve.Y <= 295))
+            {
+                LoadScreen0();
+                screenMap1.PositionEleve = new Vector2(300, 300);
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300, 300);
+            }
 
 
-            if (_elevePosition.X >= 340 && _elevePosition.X <= 350 && _elevePosition.Y >= 495 && _elevePosition.Y <= 550)
+            if ((_elevePosition.X >= 340 && _elevePosition.X <= 350 && _elevePosition.Y >= 495 && _elevePosition.Y <= 550) || (screenMapPrincipale.PositionEleve.X >= 340 && screenMapPrincipale.PositionEleve.X <= 350 && screenMapPrincipale.PositionEleve.Y >= 495 && screenMapPrincipale.PositionEleve.Y <= 550))
             {
                 LoadScreen1();
                 _ecranEncours = Ecran.Salle1;
+                screenMapPrincipale.PositionEleve = new Vector2(300, 300);
                 _elevePosition = new Vector2(170, 280);
-                if (_elevePosition.X >= 165 && _elevePosition.X <= 180 && _elevePosition.Y >= 250 && _elevePosition.Y <= 295 && (keyboardState.IsKeyDown(Keys.Left)))
-                {
-                    LoadScreen0();
-                    _ecranEncours = Ecran.SallePrincipale;
-                    _elevePosition = new Vector2(300, 300);
-                }
+                
             }
-            else if (_elevePosition.X >= 112 && _elevePosition.Y <= 160 && _elevePosition.X <= 125 && _elevePosition.Y >= 205)
+            //retour piece 0 depuis map2
+            if (screenMap2.PositionEleve.X >= 165 && screenMap2.PositionEleve.X <= 180 && screenMap2.PositionEleve.Y >= 250 && screenMap2.PositionEleve.Y <= 295)
+            {
+                LoadScreen0();
+                screenMap2.PositionEleve = new Vector2(300, 300);
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300, 300);
+            }
+
+            if ((_elevePosition.X >= 112 && _elevePosition.Y <= 160 && _elevePosition.X <= 125 && _elevePosition.Y >= 205) || (screenMapPrincipale.PositionEleve.X >= 112 && screenMapPrincipale.PositionEleve.Y <= 160 && screenMapPrincipale.PositionEleve.X <= 125 && screenMapPrincipale.PositionEleve.Y >= 205))
             {
                 LoadScreen2();
                 _ecranEncours = Ecran.Salle2;
+                screenMapPrincipale.PositionEleve = new Vector2(300, 300);
                 _elevePosition = new Vector2(300, 300);
-                if (_elevePosition.X >= 165 && _elevePosition.X <= 180 && _elevePosition.Y >= 250 && _elevePosition.Y <= 295 && (keyboardState.IsKeyDown(Keys.Left)))
-                {
-                    LoadScreen0();
-                    _ecranEncours = Ecran.SallePrincipale;
-                    _elevePosition = new Vector2(300, 300);
-                }
+                
             }
-            else if (_elevePosition.X >= 15 && _elevePosition.Y >= 80 && _elevePosition.X <= 35 && _elevePosition.Y <= 125)
+            //retour piece 0 depuis map3
+            if (screenMap3.PositionEleve.X >= 310 && screenMap3.PositionEleve.X <= 330 && screenMap3.PositionEleve.Y >= 180 && screenMap3.PositionEleve.Y <= 200)
+            {
+                LoadScreen0();
+                screenMap3.PositionEleve = new Vector2(300, 300);
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300, 300);
+            }
+
+            if ((_elevePosition.X >= 15 && _elevePosition.Y >= 80 && _elevePosition.X <= 35 && _elevePosition.Y <= 125) || (screenMapPrincipale.PositionEleve.X >= 15 && screenMapPrincipale.PositionEleve.Y >= 80 && screenMapPrincipale.PositionEleve.X <= 35 && screenMapPrincipale.PositionEleve.Y <= 125))
             {
                 LoadScreen3();
                 _ecranEncours = Ecran.Salle3;
+                screenMapPrincipale.PositionEleve = new Vector2(300, 300);
                 _elevePosition = new Vector2(320, 190);
-                if (_elevePosition.X >= 310 && _elevePosition.X <= 330 && _elevePosition.Y >= 180 && _elevePosition.Y <= 200 && (keyboardState.IsKeyDown(Keys.Left)))
-                {
-                    LoadScreen0();
-                    _ecranEncours = Ecran.SallePrincipale;
-                    _elevePosition = new Vector2(300, 300);
-                }
+               
             }
-            else if (_elevePosition.X >= 110 && _elevePosition.Y >= 80 && _elevePosition.X <= 130 && _elevePosition.Y <= 125)
+            //retour piece 0 depuis map4
+            if (screenMap4.PositionEleve.X >= 160 && screenMap4.PositionEleve.X <= 180 && screenMap4.PositionEleve.Y >= 230 && screenMap4.PositionEleve.Y <= 250)
+            {
+                LoadScreen0();
+                screenMap4.PositionEleve = new Vector2(300, 300);
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300, 300);
+            }
+
+            if ((_elevePosition.X >= 110 && _elevePosition.Y >= 80 && _elevePosition.X <= 130 && _elevePosition.Y <= 125) || (screenMapPrincipale.PositionEleve.X >= 110 && screenMapPrincipale.PositionEleve.Y >= 80 && screenMapPrincipale.PositionEleve.X <= 130 && screenMapPrincipale.PositionEleve.Y <= 125))
             {
                 LoadScreen4();
                 _ecranEncours = Ecran.Salle4;
-                _elevePosition = new Vector2(170, 240);
-                if (_elevePosition.X >= 160 && _elevePosition.X <= 180 && _elevePosition.Y >= 230 && _elevePosition.Y <= 250 && (keyboardState.IsKeyDown(Keys.Left)))
-                {
-                    LoadScreen0();
-                    _ecranEncours = Ecran.SallePrincipale;
-                    _elevePosition = new Vector2(300, 300);
-                }
+                screenMapPrincipale.PositionEleve = new Vector2(300, 300);
+                _elevePosition = new Vector2(170, 240);               
             }
-            else if (_elevePosition.X >= 15 && _elevePosition.Y >= 160 && _elevePosition.X <= 35 && _elevePosition.Y <= 208)
+            //retour piece 0 depuis map5
+            if (screenMap5.PositionEleve.X >= 460 && screenMap5.PositionEleve.X <= 480 && screenMap5.PositionEleve.Y >= 240 && screenMap5.PositionEleve.Y <= 260)
+            {
+                LoadScreen0();
+                screenMap5.PositionEleve = new Vector2(300, 300);
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300, 300);
+            }
+
+            if ((_elevePosition.X >= 15 && _elevePosition.Y >= 160 && _elevePosition.X <= 35 && _elevePosition.Y <= 208) || (screenMapPrincipale.PositionEleve.X >= 15 && screenMapPrincipale.PositionEleve.Y >= 160 && screenMapPrincipale.PositionEleve.X <= 35 && screenMapPrincipale.PositionEleve.Y <= 208))
             {
                 LoadScreen5();
                 _ecranEncours = Ecran.Salle5;
-                _elevePosition = new Vector2(470, 250);
-                if (_elevePosition.X >= 460 && _elevePosition.X <= 480 && _elevePosition.Y >= 240 && _elevePosition.Y <= 260 && (keyboardState.IsKeyDown(Keys.Left)))
-                {
-                    LoadScreen0();
-                    _ecranEncours = Ecran.SallePrincipale;
-                    _elevePosition = new Vector2(300, 300);
-                }
+                screenMapPrincipale.PositionEleve = new Vector2(300, 300);
+                _elevePosition = new Vector2(470, 250);               
             }
-            else if (_elevePosition.X >= 480 && _elevePosition.Y <= 120)
+            //retour piece 0 depuis map6
+            if (screenMap6.PositionEleve.X >= 270 && screenMap6.PositionEleve.X <= 290 && screenMap6.PositionEleve.Y >= 350 && screenMap6.PositionEleve.Y <= 400)
+            {
+                LoadScreen0();
+                screenMap6.PositionEleve = new Vector2(300, 300);
+                _ecranEncours = Ecran.SallePrincipale;
+                _elevePosition = new Vector2(300, 300);
+            }
+            if ((_elevePosition.X >= 480 && _elevePosition.Y <= 120) || (screenMapPrincipale.PositionEleve.X >= 480 && screenMapPrincipale.PositionEleve.Y <= 120))
             {
                 LoadScreen6();
                 _ecranEncours = Ecran.Salle6;
+                screenMapPrincipale.PositionEleve = new Vector2(300, 300);
                 _elevePosition = new Vector2(280, 390);
-                if (_elevePosition.X >= 270 && _elevePosition.X <= 290 && _elevePosition.Y >= 380 && _elevePosition.Y <= 400 && (keyboardState.IsKeyDown(Keys.Left)))
-                {
-                    LoadScreen0();
-                    _ecranEncours = Ecran.SallePrincipale;
-                    _elevePosition = new Vector2(300, 300);
-                }
             }
 
             base.Update(gameTime);
@@ -440,45 +458,40 @@ namespace Jeu
         }
 
         //méthodes pour load les différentes map
-        //private void LoadScreen0()
-        //{
-        //    _screenManager.LoadScreen(this, new FadeTransition(GraphicsDevice, Color.Black));
-
-        //}
         private void LoadScreen0()
         {
-            _screenManager.LoadScreen(new ScreenMapPrincipale(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMapPrincipale, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
         private void LoadScreen1()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle1(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMap1, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
 
         private void LoadScreen2()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle2(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMap2, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
         private void LoadScreen3()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle3(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMap3, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
         private void LoadScreen4()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle4(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMap4, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
         private void LoadScreen5()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle5(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMap5, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
         private void LoadScreen6()
         {
-            _screenManager.LoadScreen(new ScreenMapSalle6(this), new FadeTransition(GraphicsDevice, Color.Black));
+            _screenManager.LoadScreen(screenMap6, new FadeTransition(GraphicsDevice, Color.Black));
 
         }
 
